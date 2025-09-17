@@ -18,6 +18,7 @@ const Icon = ({ path, size = 16, className = "" }) => (
     {path}
   </svg>
 );
+
 const MailIcon = (p) => (
   <Icon {...p} path={<g><path d="M4 7l8 5 8-5"/><rect x="4" y="5" width="16" height="14" rx="2"/></g>} />
 );
@@ -220,7 +221,7 @@ const experiences = [
   // --- NEW SECTION ---
   {
     role: "ESC Volunteer",
-    company: "Erasmus+ European Solidarity Corps",
+    company: "European Solidarity Corps",
     period: "2025",
     location: "Spain",
     bullets: [
@@ -310,6 +311,15 @@ export default function Portfolio() {
 
   const totalStacks = useMemo(
     () => Object.values(skills).reduce((acc, arr) => acc + arr.length, 0),
+    []
+  );
+
+   const workExperiences = useMemo(
+    () => experiences.filter(e => !/(volunteer|ambassador)/i.test(e.role)),
+    []
+  );
+  const volunteerExperiences = useMemo(
+    () => experiences.filter(e => /(volunteer|ambassador)/i.test(e.role)),
     []
   );
 
@@ -490,35 +500,62 @@ export default function Portfolio() {
           </div>
         </Card>
       </section>
+      
 
       {/* EXPERIENCE */}
-      <section id="experience" className={`${container} py-10 sm:py-14`}>
-        <SectionTitle kicker="Experience" title="Professional timeline" />
-        <div className="relative">
-          <div className="absolute left-4 sm:left-6 top-0 bottom-0 w-px bg-slate-200" />
-          <div className="space-y-4">
-            {experiences.map((exp, i) => (
-              <div key={i} className="transition-transform duration-200 hover:-translate-y-0.5">
-                <Card className="p-4 sm:p-5 ps-12 sm:ps-14 relative">
-                  <div className="absolute left-3 sm:left-5 top-5 w-2.5 h-2.5 rounded-full bg-slate-400 shadow ring-2 ring-white" />
-
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-                    <div>
-                      <h3 className="font-semibold text-sm sm:text-base">{exp.role} · {exp.company}</h3>
-                      <p className="text-[11px] sm:text-xs text-slate-500">{exp.period} · {exp.location}</p>
-                    </div>
-                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                      {exp.bullets.map((b, idx) => (
-                        <Badge key={idx}>{b}</Badge>
-                      ))}
-                    </div>
-                  </div>
-                </Card>
+<section id="experience" className={`${container} py-10 sm:py-14`}>
+  <SectionTitle kicker="Experience" title="Professional timeline" />
+  <div className="relative">
+    <div className="absolute left-4 sm:left-6 top-0 bottom-0 w-px bg-slate-200" />
+    <div className="space-y-4">
+      {workExperiences.map((exp, i) => (
+        <div key={`work-${i}`} className="transition-transform duration-200 hover:-translate-y-0.5">
+          <Card className="p-4 sm:p-5 ps-12 sm:ps-14 relative">
+            <div className="absolute left-3 sm:left-5 top-5 w-2.5 h-2.5 rounded-full bg-slate-400 shadow ring-2 ring-white" />
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+              <div>
+                <h3 className="font-semibold text-sm sm:text-base">{exp.role} · {exp.company}</h3>
+                <p className="text-[11px] sm:text-xs text-slate-500">{exp.period} · {exp.location}</p>
               </div>
-            ))}
-          </div>
+              <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                {exp.bullets.map((b, idx) => <Badge key={idx}>{b}</Badge>)}
+              </div>
+            </div>
+          </Card>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+
+  {/* Volunteer & Ambassador */}
+  <div className="mt-10">
+    <SectionTitle kicker="Experience" title="Volunteer & Ambassador">
+      Community-facing roles where I led events, gave SDG-focused talks, and supported peers.
+    </SectionTitle>
+    <div className="relative">
+      <div className="absolute left-4 sm:left-6 top-0 bottom-0 w-px bg-slate-200" />
+      <div className="space-y-4">
+        {volunteerExperiences.map((exp, i) => (
+          <div key={`vol-${i}`} className="transition-transform duration-200 hover:-translate-y-0.5">
+            <Card className="p-4 sm:p-5 ps-12 sm:ps-14 relative">
+              <div className="absolute left-3 sm:left-5 top-5 w-2.5 h-2.5 rounded-full bg-slate-400 shadow ring-2 ring-white" />
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+                <div>
+                  <h3 className="font-semibold text-sm sm:text-base">{exp.role} · {exp.company}</h3>
+                  <p className="text-[11px] sm:text-xs text-slate-500">{exp.period} · {exp.location}</p>
+                </div>
+                <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                  {exp.bullets.map((b, idx) => <Badge key={idx}>{b}</Badge>)}
+                </div>
+              </div>
+            </Card>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* PROJECTS */}
       <section id="projects" className={`${container} py-10 sm:py-14`}>
