@@ -216,6 +216,30 @@ const experiences = [
       "Reinforcement learning for portfolio allocation",
     ],
   },
+
+  // --- NEW SECTION ---
+  {
+    role: "ESC Volunteer",
+    company: "Erasmus+ European Solidarity Corps",
+    period: "2025",
+    location: "Spain",
+    bullets: [
+      "Delivered workshops and talks on Sustainable Development Goals (SDGs)",
+      "Promoted cultural exchange and teamwork in an international environment",
+      "Enhanced adaptability, presentation, and communication skills",
+    ],
+  },
+  {
+    role: "Campus Ambassador",
+    company: "Huawei Student Developers",
+    period: "2024 – 2025",
+    location: "Abdullah Gül University",
+    bullets: [
+      "Organized events and competitions for students",
+      "Introduced Huawei’s mobile & cloud technologies",
+      "Strengthened leadership and community engagement skills",
+    ],
+  },
 ];
 
 const skills = {
@@ -498,7 +522,7 @@ export default function Portfolio() {
 
       {/* PROJECTS */}
       <section id="projects" className={`${container} py-10 sm:py-14`}>
-    
+  
           <SectionTitle kicker="Projects" title="Selected work">
   Selected projects across mobile, web/CSS, and data science — built with clean architecture, great UX, and a strong product mindset.
 </SectionTitle>
