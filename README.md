@@ -1,12 +1,46 @@
-# React + Vite
+# Irem Sila Yildirim — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live: **https://irem-sila-portfolio.vercel.app/**  
+Tech: React + Vite + TailwindCSS • Deployed on Vercel
 
-Currently, two official plugins are available:
+A developer portfolio showcasing selected work in **mobile (Android/Flutter)**, **web/CSS**, and **data science/predictive analytics**.  
+Focus on clean architecture, product-minded thinking, and pleasant UX.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
+- Responsive layout with a warm, readable color palette
+- Reusable **Card/Badge** UI primitives
+- Project cards for Android/Flutter, CSS/Web, and one Kaggle notebook
+- “Open Email” button with prefilled mailto
+- Lightbox for profile image
+- SEO & share metadata (title, description, Open Graph)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🧰 Tech Stack
+- **Frontend:** React (Vite), TailwindCSS
+- **Styling:** Custom gradients, utility-first classes
+- **Deploy:** Vercel (GitHub integration)
+
+---
+
+## 📸 Screenshots
+> `public/` içine görseller koyup aşağıdaki gibi ekleyebilirsin.
+
+| Home | Projects |
+| --- | --- |
+| ![Home](public/screenshots/home.png) | ![Projects](public/screenshots/projects.png) |
+
+*(Eğer yoksa `public/screenshots` klasörünü oluşturup görselleri ekle.)*
+
+---
+
+## 🚀 Run Locally
+```bash
+# Node 18+ önerilir
+git clone https://github.com/iremsila/IremSila_portfolio.git
+cd IremSila_portfolio
+npm install
+npm run dev
+# http://localhost:5173
