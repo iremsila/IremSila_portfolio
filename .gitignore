@@ -1,0 +1,31 @@
+﻿# Node / paket yöneticisi
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# Build çıktıları
+dist/
+build/
+out/
+
+# Framework/araç klasörleri
+.next/
+.vercel/
+.turbo/
+coverage/
+
+# Ortam değişkenleri
+.env
+.env.local
+.env.*.local
+
+# Editör/OS artıkları
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Diğer
+*.cache
