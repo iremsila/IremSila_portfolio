@@ -25,17 +25,6 @@ Focus on clean architecture, product-minded thinking, and pleasant UX.
 
 ---
 
-## 📸 Screenshots
-> `public/` içine görseller koyup aşağıdaki gibi ekleyebilirsin.
-
-| Home | Projects |
-| --- | --- |
-| ![Home](public/screenshots/home.png) | ![Projects](public/screenshots/projects.png) |
-
-*(Eğer yoksa `public/screenshots` klasörünü oluşturup görselleri ekle.)*
-
----
-
 ## 🚀 Run Locally
 ```bash
 # Node 18+ önerilir
