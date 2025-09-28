@@ -1,5 +1,4 @@
 import React, { useMemo, useState } from "react";
-
 // ---- Minimal inline icon set (no external deps) ----
 const Icon = ({ path, size = 16, className = "" }) => (
   <svg
@@ -114,19 +113,19 @@ const projects = [
       "Compose + XML hybrid UI, clean architecture (MVVM)",
     ],
     github: "https://github.com/iremsila/OBSS_CodeCamp2024",
+    image: "/src/images/paven/paven_collage_3x1.jpg",
   },
   {
-    title: "WorkWise — Freelancer & Employer Platform",
-    subtitle:
-      "Users register as freelancers or employers, post/apply for jobs, manage profiles",
-    stack: ["Flutter", "Dart", "Provider", "PHP", "MySQL", "REST"],
-    highlights: [
-      "Full-stack approach: Flutter frontend + PHP/MySQL backend",
-      "State management with Provider; auth & CRUD flows",
-    ],
-    github: "https://github.com/iremsila/FreelancerApp",
-    image: "",
-  },
+  title: "WorkWise — Freelancer & Employer Platform",
+  subtitle: "Users register as freelancers or employers, post/apply for jobs, manage profiles",
+  stack: ["Flutter", "Dart", "Provider", "PHP", "MySQL", "REST"],
+  highlights: [
+    "Full-stack approach: Flutter frontend + PHP/MySQL backend",
+    "State management with Provider; auth & CRUD flows",
+  ],
+  github: "https://github.com/iremsila/FreelancerApp",
+  image: "/src/images/workwise/workwise_collage_6x1.jpg", // ✅ ekledik
+},
   {
     title: "Drug Discovery — OCR-based Drug Identification (TUBITAK 2209-A)",
     subtitle: "Mobile app that scans drug packages via OCR and fetches details",
@@ -136,7 +135,7 @@ const projects = [
       "Clean architecture with DI, caching, and offline support",
     ],
     github: "https://github.com/iremsila/drug_recognizer_app",
-    image: "",
+    image: "/src/images/drugrecognizer/drug_collage_5x1.png",
   },
   {
     title: "Architect UI — CSS Design Project",
@@ -296,6 +295,44 @@ function Card({ children, className = "" }) {
     </div>
   );
 }
+
+// --- Mini carousel only for cards ---
+function MiniCarousel({ images = [] }) {
+  const [idx, setIdx] = useState(0);
+  const prev = () => setIdx(i => (i - 1 + images.length) % images.length);
+  const next = () => setIdx(i => (i + 1) % images.length);
+
+  if (!images.length) return <div className="w-full h-44 bg-slate-100" />;
+
+  return (
+    <div className="relative w-full h-44 bg-white dark:bg-zinc-900">
+      <img
+        src={images[idx]}
+        alt={`WorkWise ${idx + 1}`}
+        className="w-full h-full object-contain bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100"
+        draggable={false}
+      />
+      <button
+        onClick={prev}
+        className="absolute left-2 top-1/2 -translate-y-1/2 rounded-lg border bg-white/80 px-2 py-1 text-xs"
+        aria-label="Prev"
+      >
+        ‹
+      </button>
+      <button
+        onClick={next}
+        className="absolute right-2 top-1/2 -translate-y-1/2 rounded-lg border bg-white/80 px-2 py-1 text-xs"
+        aria-label="Next"
+      >
+        ›
+      </button>
+      <div className="absolute bottom-2 inset-x-0 text-center text-[11px] text-black/70">
+        {idx + 1} / {images.length}
+      </div>
+    </div>
+  );
+}
+
 
 function Pill({ children }) {
   return (
@@ -570,18 +607,24 @@ export default function Portfolio() {
           {projects.map((p, i) => (
             <Card key={i} className="group overflow-hidden transition-transform duration-200 hover:-translate-y-0.5">
               <div className="relative">
-                {p.image ? (
-                  <img
-                    src={p.image}
-                    alt={p.title}
-                    loading="lazy"
-                    className="w-full h-44 object-cover"
-                  />
-                ) : (
-                  <div className="w-full h-44 bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100" />
-                )}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-t from-black/40 to-transparent" />
-              </div>
+  {p.image ? (
+    <img
+      src={p.image}
+      alt={p.title}
+      loading="lazy"
+      className={`w-full ${
+        p.title.startsWith("WorkWise")
+          ? "aspect-[30/11] h-auto object-cover rounded-2xl border border-amber-200"
+          : "h-44 object-cover"
+      }`}
+    />
+  ) : (
+    <div className="w-full h-44 bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100" />
+  )}
+  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-t from-black/40 to-transparent" />
+</div>
+
+
 
               <div className="p-4 sm:p-5">
                 <div className="flex items-start justify-between gap-3">
