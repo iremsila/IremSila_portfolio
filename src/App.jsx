@@ -113,7 +113,7 @@ const projects = [
       "Compose + XML hybrid UI, clean architecture (MVVM)",
     ],
     github: "https://github.com/iremsila/OBSS_CodeCamp2024",
-    image: "/src/images/paven/paven/paven_collage_3x1.jpg",
+    image: "/images/paven_collage_3x1.jpg",
   },
   {
   title: "WorkWise — Freelancer & Employer Platform",
@@ -124,7 +124,7 @@ const projects = [
     "State management with Provider; auth & CRUD flows",
   ],
   github: "https://github.com/iremsila/FreelancerApp",
-  image: "/src/images/workwise/workwise/workwise_collage_6x1.jpg", 
+  image: "/images/workwise_collage_6x1.jpg", 
 },
   {
     title: "Drug Discovery — OCR-based Drug Identification (TUBITAK 2209-A)",
@@ -135,7 +135,7 @@ const projects = [
       "Clean architecture with DI, caching, and offline support",
     ],
     github: "https://github.com/iremsila/drug_recognizer_app",
-    image: "/src/images/drug/drugrecognizer/drug_collage_5x1.png",
+    image: "/images/drug_collage_5x1.png",
   },
   {
     title: "Architect UI — CSS Design Project",
