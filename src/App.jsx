@@ -256,7 +256,7 @@ const links = {
   github: "https://github.com/iremsila",
   medium: "https://medium.com/@iremsila0108",
   instagram: "https://www.instagram.com/codingwithiremsila/",
-  cv: "/cv/IremSilaYildirim_Resume.pdf", // put ASCII file name under public/cv/
+  cv: "/cv/İrem-Sıla-Yıldırım-Resume.pdf", // put ASCII file name under public/cv/
 };
 
 // ---------- UI PRIMITIVES ----------
