@@ -127,16 +127,26 @@ const projects = [
   image: "/images/workwise_collage_6x1.jpg", 
 },
   {
-    title: "Drug Discovery — OCR-based Drug Identification (TUBITAK 2209-A)",
-    subtitle: "Mobile app that scans drug packages via OCR and fetches details",
-    stack: ["Kotlin", "ML Kit (OCR)", "CameraX", "Retrofit", "Room", "Hilt"],
-    highlights: [
-      "End-to-end OCR flow (camera → text → API → detail screen)",
-      "Clean architecture with DI, caching, and offline support",
-    ],
-    github: "https://github.com/iremsila/drug_recognizer_app",
-    image: "/images/drug_collage_5x1.png",
-  },
+  title: "Drug Recognizer — OCR-based Drug Identification",
+  subtitle:
+    "Flutter MVP that scans medicine packages via OCR and fetches details. Kotlin/Android native version is under active development for TÜBİTAK 2209-A.",
+  stack: [
+    "Flutter (public)",
+    "Dart",
+    "Google ML Kit (OCR)",
+    "Provider",
+    "REST",
+    "Kotlin (TÜBİTAK — WIP)",
+    "CameraX (native)"
+  ],
+  highlights: [
+    "Camera → OCR → parse → fetch drug details → results screen",
+    "State management with Provider; clean error/empty states"
+  ],
+  github: "https://github.com/iremsila/drug_recognizer_flutter", // if you have a Flutter repo
+  image: "/images/drug_collage_5x1.png",
+  note: "Kotlin/Android native version is being developed for TÜBİTAK 2209-A."
+},
   {
     title: "Architect UI — CSS Design Project",
     subtitle: "Architect-themed landing page built with pure CSS and semantic HTML",
@@ -628,28 +638,71 @@ export default function Portfolio() {
 
               <div className="p-4 sm:p-5">
                 <div className="flex items-start justify-between gap-3">
-                  <div className="min-w-0">
-                    <h3 className="text-base sm:text-lg font-semibold truncate">{p.title}</h3>
-                    <p className="text-xs sm:text-sm text-slate-600">{p.subtitle}</p>
-                  </div>
+  <div className="min-w-0">
+    <h3 className="text-base sm:text-lg font-semibold truncate">{p.title}</h3>
+    <p className="text-xs sm:text-sm text-slate-600">{p.subtitle}</p>
 
-                  <a
-                    href={p.github}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1 text-sm rounded-lg border border-black px-2.5 py-1.5 hover:shadow"
-                  >
-                    {p.isKaggle ? (
-                      <>
-                        <ExternalLinkIcon className="w-4 h-4" /> Notebook
-                      </>
-                    ) : (
-                      <>
-                        <GithubIcon className="w-4 h-4" /> Code
-                      </>
-                    )}
-                  </a>
-                </div>
+    {/* Step 2: NOTE CHIP (opsiyonel alan) */}
+    {p.note && (
+      <div
+        className="mt-1 inline-flex items-center gap-1 text-[11px] sm:text-xs
+                   text-amber-800 bg-amber-100/70 border border-amber-200
+                   rounded-full px-2 py-0.5"
+      >
+        <StarIcon className="w-3 h-3" />
+        {p.note}
+      </div>
+    )}
+  </div>
+
+  {/* Step 3: İKİ REPO BUTONU (Flutter + Kotlin). Geriye dönük: p.github varsa tek buton göster. */}
+  <div className="flex flex-col items-end gap-1">
+    {(p.repoFlutter || p.repoKotlin) ? (
+      <div className="flex gap-2">
+        {p.repoFlutter && (
+          <a
+            href={p.repoFlutter}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1 text-sm rounded-lg border border-black px-2.5 py-1.5 hover:shadow"
+          >
+            <GithubIcon className="w-4 h-4" /> Flutter Code
+          </a>
+        )}
+        {p.repoKotlin && (
+          <a
+            href={p.repoKotlin}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1 text-sm rounded-lg border border-black px-2.5 py-1.5 hover:shadow"
+          >
+            <GithubIcon className="w-4 h-4" /> Kotlin (WIP)
+          </a>
+        )}
+      </div>
+    ) : (
+      p.github && (
+        <a
+          href={p.github}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-1 text-sm rounded-lg border border-black px-2.5 py-1.5 hover:shadow"
+        >
+          {p.isKaggle ? (
+            <>
+              <ExternalLinkIcon className="w-4 h-4" /> Notebook
+            </>
+          ) : (
+            <>
+              <GithubIcon className="w-4 h-4" /> Code
+            </>
+          )}
+        </a>
+      )
+    )}
+  </div>
+</div>
+
 
                 <div className="flex flex-wrap mt-3">
                   {p.stack.map((s, idx) => (
